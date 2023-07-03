@@ -8,7 +8,20 @@
         </div>
         <div class="row justify-content-center gap-4" id="user-content">
             <div class="col-md-3 rounded-3 shadow-main"></div>
-            <form-add-vue v-if="!isProfile"/>
+            <div class="col-md-6 rounded-3 shadow-main p-5 justify-content-center d-flex flex-column align-items-center">
+                <form-add-vue v-if="!isProfile"/>
+                <UserBiodata :profile="profile" v-if="userInfo"/>
+                <div class="btn-group align-self-end" role="group">
+                    <input type="radio" class="btn-check" name="btnradio" id="biodata" autocomplete="off" checked>
+                    <label class="btn btn-outline-primary" for="biodata">Biodata</label>
+
+                    <input type="radio" class="btn-check" name="btnradio" id="edit" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="edit">Edit Biodata</label>
+
+                    <input type="radio" class="btn-check" name="btnradio" id="chat" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="chat">Chat</label>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -16,15 +29,19 @@
 <script>
     import { mapActions, mapState } from 'pinia';
     import { useProfileStore } from '../stores/userProfile'
-    import FormAddVue from '../components/FormAdd.vue';
+    import FormAdd from '../components/FormAdd.vue';
+    import UserBiodata from '../components/UserBiodata.vue';
+    
 
     export default {
         components: {
-            FormAddVue
+            FormAdd,
+            UserBiodata
         },
         data() {
             return {
-                isProfile: false
+                isProfile: false,
+                userInfo: false,
             }
         },
         computed: {
@@ -37,6 +54,7 @@
            await this.getUser()
            if(this.profile) {
             this.isProfile = true
+            this.userInfo = true
            }
         }
     }

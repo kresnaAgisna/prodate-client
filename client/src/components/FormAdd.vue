@@ -1,5 +1,4 @@
 <template>
-    <div class="col-md-6 rounded-3 shadow-main p-5 justify-content-center d-flex flex-column align-items-center">
         <h3 class="text-center mb-5">Finish your profile</h3>
         <form class="d-flex flex-column align-items-center justify-content-center w-75" @submit.prevent="createProfile(formProfile)">
             <div class="d-flex justify-content-center gap-5 mb-3">
@@ -28,7 +27,6 @@
             </div>
             <button type="submit" class="buttons rounded-3 text-white fw-bold w-100">Submit</button>
         </form>
-    </div>
 </template>
 
 <script>
