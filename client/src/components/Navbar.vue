@@ -14,6 +14,9 @@
         <router-link to="/register" class="d-flex justify-content-center align-items-center rounded-pill text-white text-decoration-none fw-bold lh-1 clickable buttons">
           Register
         </router-link>
+        <a @click="handleLogout" class="d-flex justify-content-center align-items-center rounded-pill text-white text-decoration-none fw-bold lh-1 clickable buttons">
+          Log out
+        </a>
       </div>
   </div>
 </nav>
@@ -21,7 +24,12 @@
 
 <script>
   export default {
-    
+    methods: {
+      handleLogout() {
+        localStorage.clear()
+        this.$router.push('/login')
+      }
+    }
   }
 </script>
 

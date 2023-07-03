@@ -8,19 +8,36 @@
         </div>
         <div class="row justify-content-center gap-4" id="user-content">
             <div class="col-md-3 rounded-3 shadow-main"></div>
-            <form-add-vue/>
+            <form-add-vue v-if="!isProfile"/>
         </div>
     </div>
 </template>
 
 <script>
-    import { mapActions } from 'pinia';
+    import { mapActions, mapState } from 'pinia';
     import { useProfileStore } from '../stores/userProfile'
     import FormAddVue from '../components/FormAdd.vue';
 
     export default {
         components: {
             FormAddVue
+        },
+        data() {
+            return {
+                isProfile: false
+            }
+        },
+        computed: {
+            ...mapState(useProfileStore, ['profile'])
+        },
+        methods: {
+            ...mapActions(useProfileStore, ['getUser'])
+        },
+        async created() {
+           await this.getUser()
+           if(this.profile) {
+            this.isProfile = true
+           }
         }
     }
 

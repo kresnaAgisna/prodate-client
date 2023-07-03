@@ -9,6 +9,8 @@ export const useLoginStore = defineStore('login', {
     async handleRegister(dataUser) {
       try {
         const { data } =  await axios.post('/users/register', dataUser)
+
+        this.router.push('/login')
       } catch (error) {
         console.log(error)
       }
@@ -18,6 +20,7 @@ export const useLoginStore = defineStore('login', {
         const { data } = await axios.post('/users/login', dataUser)
         
         localStorage.access_token = data.access_token
+        this.router.push('/profile')
       } catch (error) {
         console.log(error)
       }
