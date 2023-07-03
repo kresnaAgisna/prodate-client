@@ -7,12 +7,23 @@
           Prodate
         </a>
       </div>
-      <div class="d-flex justify-content-center align-items-center rounded-pill text-white fw-bold lh-1 clickable buttons">
-        Login
+      <div class="d-flex gap-3">
+        <router-link to="/login" class="d-flex justify-content-center align-items-center rounded-pill text-white text-decoration-none fw-bold lh-1 clickable buttons">
+          Login
+        </router-link>
+        <router-link to="/register" class="d-flex justify-content-center align-items-center rounded-pill text-white text-decoration-none fw-bold lh-1 clickable buttons">
+          Register
+        </router-link>
       </div>
   </div>
 </nav>
 </template>
+
+<script>
+  export default {
+    
+  }
+</script>
 
 <style scoped>
 .buttons {
